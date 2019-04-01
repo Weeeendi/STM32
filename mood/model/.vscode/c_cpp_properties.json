@@ -1,0 +1,64 @@
+{
+    
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Include",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/Common",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ak4343",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/cs43l22",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/hx8347d",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ili9320",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ili9325",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/lis302dl",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/spfd5408",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/st7735",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/stlm75",
+                "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/stmpe811",
+                "C:/Users/user/.platformio/packages/tool-unity",
+                "f:/workspace/mood/model/include",
+                "f:/workspace/mood/model/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceRoot}/.vscode/.browse.c_cpp.db",
+                "path": [
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Include",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/STM32F1xx_HAL_Driver/Inc",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/Common",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ak4343",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/cs43l22",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/hx8347d",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ili9320",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/ili9325",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/lis302dl",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/spfd5408",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/st7735",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/stlm75",
+                    "C:/Users/user/.platformio/packages/framework-stm32cube/f1/Drivers/BSP/Components/stmpe811",
+                    "C:/Users/user/.platformio/packages/tool-unity",
+                    "f:/workspace/mood/model/include",
+                    "f:/workspace/mood/model/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=30605",
+                "STM32F103xE",
+                "USE_HAL_DRIVER",
+                "F_CPU=72000000L",
+                ""
+            ],
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "C:/Users/user/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m3",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
