@@ -14,7 +14,7 @@
 
 #include "Systick.h"
 static u8 digital[] = {0xc0,0xf9,0xA4,0xB0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E};
-
+static u8 Number;
 
 void My_USART_Initial(void)
 {
@@ -62,7 +62,7 @@ void USART1_IRQHandler(void)
   {
     res = USART_ReceiveData(USART1);//USART->DR
     USART_SendData(USART1,res);
-    GPIO_Write(GPIOC,digital[(int)(res>>1)]);
+    Number = res;
     while(USART_GetFlagStatus(USART1,USART_FLAG_TC) != SET);
   }
   USART_ClearFlag(USART1, USART_FLAG_TC);
@@ -74,5 +74,8 @@ int main(void)
    LED_Init();
    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
    My_USART_Initial();
-   while(1);
+   while(1)
+   {
+     GPIO_Write(GPIOC,digital[Number]);
+   }
  }

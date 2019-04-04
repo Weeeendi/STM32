@@ -1,0 +1,42 @@
+{
+     "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${worksRoot}",
+                "${workspaceRoot}/SYSTEM/sys",
+                "F:/workspace/LED/SYSTEM/sys",
+                "F:\\workspace\\CLOCK\\STM32F10x_FWLib\\inc",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1/arm-none-eabi/thumb/v7-m",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1/backward",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/sys",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include",
+                "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include-fixed"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${worksRoot}",
+                    "${workspaceRoot}/SYSTEM/sys",
+                    "F:/workspace/LED/SYSTEM/sys",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1/arm-none-eabi/thumb/v7-m",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/c++/7.2.1/backward",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/arm-none-eabi/include/sys",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include",
+                    "C:/Program Files (x86)/GNU Tools ARM Embedded/7 2017-q4-major/lib/gcc/arm-none-eabi/7.2.1/include-fixed"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+             }}
+        ],
+    "version": 4
+}
