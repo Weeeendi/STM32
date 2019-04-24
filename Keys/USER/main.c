@@ -25,7 +25,7 @@
 	LED0=0;					//先点亮红灯
 	while(1)
 	{
- 		key=KEY_Scan(1);	//得到键值(1支持连续按;0不支持连续按)
+ 		key=KEY_Scan(0);	//得到键值(1支持连续按;0不支持连续按)
 	   	if(key)
 		{						   
 			switch(key)

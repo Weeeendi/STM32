@@ -998,15 +998,16 @@ typedef struct
   * @brief General Purpose I/O
   */
 
-typedef struct
+typedef struct 
 {
-  __IO uint32_t CRL;
-  __IO uint32_t CRH;
-  __IO uint32_t IDR;
-  __IO uint32_t ODR;
-  __IO uint32_t BSRR;
-  __IO uint32_t BRR;
-  __IO uint32_t LCKR;
+  __IO uint32_t CRL; //端口配置低寄存器
+  __IO uint32_t CRH; //端口配置高寄存器
+  __IO uint32_t IDR; //端口输入数据寄存器
+  __IO uint32_t ODR; //端口输出数据寄存器
+  __IO uint32_t BSRR;//对GPIOx_BSRR(x = A…E)，可以分别地对各个ODR位进行独立的设置/清除
+  __IO uint32_t BRR; //端口位清除寄存器
+  __IO uint32_t LCKR;//端口配置锁定寄存器 
+                     //当对相应的端口位执行了LOCK序列后，在下次系统复位之前将不能再更改端口位的配置。
 } GPIO_TypeDef;
 
 /** 
