@@ -2,14 +2,14 @@
 
 
 /************************************************
- ALIENTEK Õ½½¢STM32F103¿ª·¢°åÊµÑé0
- ¹¤³ÌÄ£°å
- ×¢Òâ£¬ÕâÊÇÊÖ²áÖĞµÄĞÂ½¨¹¤³ÌÕÂ½ÚÊ¹ÓÃµÄmainÎÄ¼ş 
- ¼¼ÊõÖ§³Ö£ºwww.openedv.com
- ÌÔ±¦µêÆÌ£ºhttp://eboard.taobao.com 
- ¹Ø×¢Î¢ĞÅ¹«ÖÚÆ½Ì¨Î¢ĞÅºÅ£º"ÕıµãÔ­×Ó"£¬Ãâ·Ñ»ñÈ¡STM32×ÊÁÏ¡£
- ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾  
- ×÷Õß£ºÕıµãÔ­×Ó @ALIENTEK
+ ALIENTEK æˆ˜èˆ°STM32F103å¼€å‘æ¿å®éªŒ0
+ å·¥ç¨‹æ¨¡æ¿
+ æ³¨æ„ï¼Œè¿™æ˜¯æ‰‹å†Œä¸­çš„æ–°å»ºå·¥ç¨‹ç« èŠ‚ä½¿ç”¨çš„mainæ–‡ä»¶ 
+ æŠ€æœ¯æ”¯æŒï¼šwww.openedv.com
+ æ·˜å®åº—é“ºï¼šhttp://eboard.taobao.com 
+ å…³æ³¨å¾®ä¿¡å…¬ä¼—å¹³å°å¾®ä¿¡å·ï¼š"æ­£ç‚¹åŸå­"ï¼Œå…è´¹è·å–STM32èµ„æ–™ã€‚
+ å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸  
+ ä½œè€…ï¼šæ­£ç‚¹åŸå­ @ALIENTEK
 ************************************************/
 
 
@@ -20,12 +20,12 @@ int main(void)
         GPIO_InitTypeDef GPIO_InitStructure;
         TIM_TimeBaseInitTypeDef TIM_TImeBaseStructure;
         TIM_OCInitTypeDef  TIM_OCInitStructure;
-        //Ê¹ÄÜGPIOA£¬TIM2
+        //ä½¿èƒ½GPIOAï¼ŒTIM2
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
    
    
-        //GPIOµÄÅäÖÃ£¬¹Ù·½¿âÓĞ¸ø³öĞèÒªÅäÖÃµÄÒ»Ğ©²ÎÊı£¬Èç¹ûÍü¼ÇÁË£¬²ÎÕÕÒ»ÏÂ¼´¿É£¬ÎÒÕâÀïÅäÖÃµÄÊÇGPIOA_Pin_1
+        //GPIOçš„é…ç½®ï¼Œå®˜æ–¹åº“æœ‰ç»™å‡ºéœ€è¦é…ç½®çš„ä¸€äº›å‚æ•°ï¼Œå¦‚æœå¿˜è®°äº†ï¼Œå‚ç…§ä¸€ä¸‹å³å¯ï¼Œæˆ‘è¿™é‡Œé…ç½®çš„æ˜¯GPIOA_Pin_1
         
    
         GPIO_InitStructure.GPIO_Pin=GPIO_Pin_1;
@@ -35,26 +35,26 @@ int main(void)
    
         
 
-        //ÅäÖÃTIM2µÄÊ±ÖÓÊä³öÆµÂÊ£¬ÒÔ¼°ÆäËüÏà¹Ø²ÎÊı³õÊ¼»¯
-        TIM_TImeBaseStructure.TIM_Prescaler=0;//ÉèÖÃPWMµÄÆµÂÊ
+        //é…ç½®TIM2çš„æ—¶é’Ÿè¾“å‡ºé¢‘ç‡ï¼Œä»¥åŠå…¶å®ƒç›¸å…³å‚æ•°åˆå§‹åŒ–
+        TIM_TImeBaseStructure.TIM_Prescaler=0;//è®¾ç½®PWMçš„é¢‘ç‡
         TIM_TImeBaseStructure.TIM_CounterMode=0;
         TIM_TImeBaseStructure.TIM_Period=7200-1;
         TIM_TimeBaseInit(TIM2,&TIM_TImeBaseStructure);
 
 
-        //ÉèÖÃPWMµÄÊä³ö·½Ê½
+        //è®¾ç½®PWMçš„è¾“å‡ºæ–¹å¼
         TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
         TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
         TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
        
        
-        //ÅäÖÃÕ¼¿Õ±È
+        //é…ç½®å ç©ºæ¯”
         //TIM_OCInitStructure.TIM_Pulse=20;
 
         TIM_OC2Init(TIM2,&TIM_OCInitStructure);
         TIM_ForcedOC1Config(TIM2,TIM_ForcedAction_Active);
-        TIM_Cmd(TIM2,ENABLE);
-        TIM_CtrlPWMOutputs(TIM2,ENABLE);
+        TIM_Cmd(TIM2,ENABLE);//ä½¿èƒ½å®šæ—¶å™¨
+        TIM_CtrlPWMOutputs(TIM2,ENABLE);//ä½¿èƒ½PWMå‘ç”Ÿå™¨
         
         
         while(1)
@@ -62,7 +62,6 @@ int main(void)
               while (dutyCycle < 9999)
             {
             dutyCycle ++;
-          //	  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, dutyCycle);//ĞŞ¸ÄÕ¼¿Õ±ÈºóË¢ĞÂ¼Ä´æÆ÷ÉèÖÃ
               TIM2->CCR2 = dutyCycle;
 		  
             }
@@ -70,7 +69,6 @@ int main(void)
               while (dutyCycle)
               {
                 dutyCycle --;
-            //  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, dutyCycle);
                 TIM2->CCR2 = dutyCycle;
               }
           
