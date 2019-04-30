@@ -4,9 +4,7 @@
 void LED_Init(void){
   RCC->APB2ENR|=1<<4;
   RCC->APB2ENR|=1<<6;
-  
-  //GPIOB.5
-  
+    
   GPIOC->CRL&=0xFFFFFFF0;
   GPIOC->CRL|=0x00000003;
   GPIOC->ODR|=1;
