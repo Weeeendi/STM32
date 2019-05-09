@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+<<<<<<< HEAD
 #include "Systick.h"
 void RCC_cfg(void);
 
@@ -13,8 +14,35 @@ int main(void)
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
         RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
         GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);//¸Ä±äÖ¸¶¨¹Ü½ÅµÄÓ³Éä
+=======
+
+
+/************************************************
+ ALIENTEK æˆ˜èˆ°STM32F103å¼€å‘æ¿å®éªŒ0
+ å·¥ç¨‹æ¨¡æ¿
+ æ³¨æ„ï¼Œè¿™æ˜¯æ‰‹å†Œä¸­çš„æ–°å»ºå·¥ç¨‹ç« èŠ‚ä½¿ç”¨çš„mainæ–‡ä»¶ 
+ æŠ€æœ¯æ”¯æŒï¼šwww.openedv.com
+ æ·˜å®åº—é“ºï¼šhttp://eboard.taobao.com 
+ å…³æ³¨å¾®ä¿¡å…¬ä¼—å¹³å°å¾®ä¿¡å·ï¼š"æ­£ç‚¹åŸå­"ï¼Œå…è´¹è·å–STM32èµ„æ–™ã€‚
+ å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸  
+ ä½œè€…ï¼šæ­£ç‚¹åŸå­ @ALIENTEK
+************************************************/
+
+
+int main(void)
+ {	    static u16 dutyCycle=0 ;
    
-        //GPIOµÄÅäÖÃ£¬¹Ù·½¿âÓĞ¸ø³öĞèÒªÅäÖÃµÄÒ»Ğ©²ÎÊı£¬Èç¹ûÍü¼ÇÁË£¬²ÎÕÕÒ»ÏÂ¼´¿É£¬ÎÒÕâÀïÅäÖÃµÄÊÇGPIOA_Pin_1
+   
+        GPIO_InitTypeDef GPIO_InitStructure;
+        TIM_TimeBaseInitTypeDef TIM_TImeBaseStructure;
+        TIM_OCInitTypeDef  TIM_OCInitStructure;
+        //ä½¿èƒ½GPIOAï¼ŒTIM2
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+        RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
+   
+>>>>>>> bcbc5beb9b0470e46763122a9df4696249cf433f
+   
+        //GPIOçš„é…ç½®ï¼Œå®˜æ–¹åº“æœ‰ç»™å‡ºéœ€è¦é…ç½®çš„ä¸€äº›å‚æ•°ï¼Œå¦‚æœå¿˜è®°äº†ï¼Œå‚ç…§ä¸€ä¸‹å³å¯ï¼Œæˆ‘è¿™é‡Œé…ç½®çš„æ˜¯GPIOA_Pin_1
         
    
         GPIO_InitStructure.GPIO_Pin=GPIO_Pin_7;
@@ -24,18 +52,26 @@ int main(void)
    
         	
 
+<<<<<<< HEAD
         //ÅäÖÃTIM2µÄÊ±ÖÓÊä³öÆµÂÊ£¬ÒÔ¼°ÆäËüÏà¹Ø²ÎÊı³õÊ¼»¯
         TIM_TImeBaseStructure.TIM_Prescaler=7200-1;//ÉèÖÃPWMµÄÆµÂÊ
         TIM_TImeBaseStructure.TIM_CounterMode=0;
         TIM_TImeBaseStructure.TIM_Period=99;
         TIM_TimeBaseInit(TIM3,&TIM_TImeBaseStructure);
+=======
+        //é…ç½®TIM2çš„æ—¶é’Ÿè¾“å‡ºé¢‘ç‡ï¼Œä»¥åŠå…¶å®ƒç›¸å…³å‚æ•°åˆå§‹åŒ–
+        TIM_TImeBaseStructure.TIM_Prescaler=0;//è®¾ç½®PWMçš„é¢‘ç‡
+        TIM_TImeBaseStructure.TIM_CounterMode=0;
+        TIM_TImeBaseStructure.TIM_Period=7200-1;
+        TIM_TimeBaseInit(TIM2,&TIM_TImeBaseStructure);
+>>>>>>> bcbc5beb9b0470e46763122a9df4696249cf433f
 
 
-        //ÉèÖÃPWMµÄÊä³ö·½Ê½
+        //è®¾ç½®PWMçš„è¾“å‡ºæ–¹å¼
         TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
         TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-        TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Enable;
         TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+<<<<<<< HEAD
         TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
         TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;   
         //ÅäÖÃÕ¼¿Õ±È
@@ -61,6 +97,34 @@ int main(void)
 						}
             TIM3->CCR2 = light;
 						delay_ms(10);
+=======
+       
+       
+        //é…ç½®å ç©ºæ¯”
+        //TIM_OCInitStructure.TIM_Pulse=20;
+
+        TIM_OC2Init(TIM2,&TIM_OCInitStructure);
+        TIM_ForcedOC1Config(TIM2,TIM_ForcedAction_Active);
+        TIM_Cmd(TIM2,ENABLE);//ä½¿èƒ½å®šæ—¶å™¨
+        TIM_CtrlPWMOutputs(TIM2,ENABLE);//ä½¿èƒ½PWMå‘ç”Ÿå™¨
+        
+        
+        while(1)
+        {
+              while (dutyCycle < 9999)
+            {
+            dutyCycle ++;
+              TIM2->CCR2 = dutyCycle;
+		  
+            }
+    
+              while (dutyCycle)
+              {
+                dutyCycle --;
+                TIM2->CCR2 = dutyCycle;
+              }
+          
+>>>>>>> bcbc5beb9b0470e46763122a9df4696249cf433f
         }
  }
 
