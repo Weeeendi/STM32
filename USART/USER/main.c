@@ -63,6 +63,7 @@ void USART1_IRQHandler(void)
     res = USART_ReceiveData(USART1);//USART->DR
     USART_SendData(USART1,res);
     Number = res;
+		GPIO_Write(GPIOC,digital[Number]);
     while(USART_GetFlagStatus(USART1,USART_FLAG_TC) != SET);
   }
   USART_ClearFlag(USART1, USART_FLAG_TC);
@@ -74,8 +75,5 @@ int main(void)
    LED_Init();
    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
    My_USART_Initial();
-   while(1)
-   {
-     GPIO_Write(GPIOC,digital[Number]);
-   }
+   while(1);
  }
