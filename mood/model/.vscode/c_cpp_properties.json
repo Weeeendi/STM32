@@ -1,6 +1,8 @@
 {
-    
     "configurations": [
+        {
+            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
+        },
         {
             "name": "Win32",
             "includePath": [
@@ -48,16 +50,14 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=30605",
+                "PLATFORMIO=30607",
                 "STM32F103xE",
                 "USE_HAL_DRIVER",
                 "F_CPU=72000000L",
                 ""
             ],
             "intelliSenseMode": "clang-x64",
-            "compilerPath": "C:/Users/user/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe -mthumb -mcpu=cortex-m3",
-            "cStandard": "c11",
-            "cppStandard": "c++17"
+            "compilerPath": "\"C:/Users/user/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe\" -mthumb -mcpu=cortex-m3"
         }
     ],
     "version": 4

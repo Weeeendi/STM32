@@ -1,3 +1,4 @@
+#include "stm32f10x.h"
 #ifndef CAN_H
 #define CAN_H
 
