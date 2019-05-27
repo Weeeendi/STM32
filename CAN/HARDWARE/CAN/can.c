@@ -2,14 +2,13 @@
 #include "can.h"
 #include <string.h>
 
+
+
 CanRxMsg CanRxMessage;
 CanTxMsg CanTxMessage;
 
 void CAN1_Init(){
-  GPIO_InitTypeDef GPIO_InitStruct;
-  
-  
-  
+  GPIO_InitTypeDef GPIO_InitStruct;  
 //  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE); 
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_AFIO,ENABLE);
   
@@ -35,7 +34,17 @@ void CAN1_Init(){
 //  USART_Cmd(USART1, ENABLE);                    //使能串口1 
   
 }
-
+//CAN初始化
+//tsjw:重新同步跳跃时间单元.范围:CAN_SJW_1tq~ CAN_SJW_4tq
+//tbs2:时间段2的时间单元.   范围:CAN_BS2_1tq~CAN_BS2_8tq;
+//tbs1:时间段1的时间单元.   范围:CAN_BS1_1tq ~CAN_BS1_16tq
+//brp :波特率分频器.范围:1~1024;  tq=(brp)*tpclk1
+//波特率=Fpclk1/((tbs1+tbs2+1)*brp);
+//mode:CAN_Mode_Normal,普通模式;CAN_Mode_LoopBack,回环模式;
+//Fpclk1的时钟在初始化的时候设置为36M,如果设置CAN_Mode_Init(CAN_SJW_1tq,CAN_BS2_8tq,CAN_BS1_9tq,4,CAN_Mode_LoopBack);
+//则波特率为:36M/((8+9+1)*4)=500Kbps
+//返回值:0,初始化OK;
+//    其他,初始化失败;
 void CAN1_MODE_Config(void)
 {
   CAN_InitTypeDef CAN_InitStructure;
@@ -54,8 +63,8 @@ void CAN1_MODE_Config(void)
   CAN_InitStructure.CAN_RFLM = DISABLE;                     //接受溢出时FIFO不锁定，下一个收到的报文覆盖原有报文
   CAN_InitStructure.CAN_Mode = CAN_Mode_LoopBack;           //CAN硬件工作环回模式
   CAN_InitStructure.CAN_SJW = CAN_SJW_1tq;                  //重新同步跳跃宽度为2个时间单位
-  CAN_InitStructure.CAN_BS1 = CAN_BS1_8tq;                  //时间段为8个时间单位
-  CAN_InitStructure.CAN_BS2 = CAN_BS2_7tq;                  //时间段为7个时间单位
+  CAN_InitStructure.CAN_BS1 = CAN_BS1_8tq;                  //时间段1为8个时间单位
+  CAN_InitStructure.CAN_BS2 = CAN_BS2_7tq;                  //时间段2为7个时间单位
   CAN_InitStructure.CAN_Prescaler = 5;                      //设定一个时间单位的长度为5,范围(1~1024)
   CAN_Init(CAN1, &CAN_InitStructure);
   
@@ -84,7 +93,7 @@ void CAN1_MODE_Config(void)
 }
 
 //CAN发送帧构成
-void CAN_TxMessageInit(uint32_t std_id, uint32_t ext_id, uint8_t ide, uint8_t rtr, uint8_t dlc, uint8_t *pdata)
+extern void CAN_TxMessageInit(uint32_t std_id, uint32_t ext_id, uint8_t ide, uint8_t rtr, uint8_t dlc, uint8_t *pdata)
 {
     uint8_t i;
     assert_param(dlc>8);      

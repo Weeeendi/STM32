@@ -1,0 +1,62 @@
+/*----------------------------------------------------------------------------
+ * CMSIS-RTOS 'main' function template
+ *---------------------------------------------------------------------------*/
+#include "main.h"
+
+/********** 使用printf函数配置 **********/
+#pragma import(__use_no_semihosting)
+ 
+struct __FILE
+{
+	int a;
+};
+ 
+FILE __stdout;
+//定义_sys_exit()以避免使用半主机模式
+void _sys_exit(int x)
+{
+	
+}
+//重定义fputc函数
+int fputc(int ch, FILE *f)
+{
+	while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);		//等待上次发送结束
+	USART_SendData(USART1, (unsigned char)ch);				//发送数据到串口
+	return ch;
+}
+
+
+static void Error_Handler (void) {
+  while (1);
+}
+
+
+//osTread 
+osThreadId CAN_ID,LCD_ID,LED_ID;
+osThreadDef(LCD_Thread,osPriorityNormal,1,0);
+osThreadDef(Thread_LED1,osPriorityNormal,1,0);
+osThreadDef(CAN_Thread,osPriorityNormal,1,0);
+/*
+ * main: initialize and start the system
+ */
+int main (void) {
+  osKernelInitialize ();                    // initialize CMSIS-RTOS
+  LED_Initialize();
+  uart1_init(9600);
+  TFTLCD_Init();
+  if(UI_Initialize()==false){Error_Handler();} 
+  if(CAN_Initialize()==false){Error_Handler();}  
+    
+  // initialize peripherals here
+  LCD_ID = osThreadCreate(osThread(LCD_Thread),NULL);
+  LED_ID = osThreadCreate(osThread(Thread_LED1),NULL);
+  CAN_ID = osThreadCreate(osThread(CAN_Thread),NULL);
+  // create 'thread' functions that start executing,
+  
+  // example: tid_name = osThreadCreate (osThread(name), NULL);
+
+  osKernelStart();                         // start thread execution 
+  
+  
+}
+

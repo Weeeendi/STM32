@@ -1,8 +1,6 @@
+#include <stdio.h>
 #include "stm32f10x.h"
 #include "led.h"
-
-
-#include <stdio.h>
 #include "Systick.h"
 #include "can.h"
 #include "string.h"
@@ -14,13 +12,11 @@ uint8_t tdata[8] = {0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37};
 uint8_t rdata[8];
 
 int main(void)
-{   
-    
-
-    
+{    
     LED_Init();
     CAN1_Init();   //硬件初始化
-    CAN_TxMessageInit(0x011, 0x0000, CAN_ID_STD,CAN_RTR_DATA, sizeof(tdata), tdata);//生成CAN报文
+    CAN1_MODE_Config();
+    //生成CAN报文
     CAN_Transmit(CAN1, &CanTxMessage);  //发送CAN报文
     
     GPIO_ResetBits(LED_PORT, GPIO_Pin_1);

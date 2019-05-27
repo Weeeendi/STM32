@@ -1,7 +1,6 @@
 #ifndef _tftlcd_H
 #define _tftlcd_H	
 #include "system.h"	 
-
 //定义LCD彩屏的驱动类型  可根据自己手上的彩屏背面型号来选择打开哪种驱动
 //#define TFTLCD_HX8357D 
 
@@ -53,6 +52,14 @@ typedef struct
 	u8  dir;            //LCD 方向
 }_tftlcd_data;
 
+/* Font definitions */
+typedef struct _GLCD_FONT {
+        uint16_t width;         ///< Character width
+        uint16_t height;        ///< Character height
+        uint32_t offset;        ///< Character offset
+        uint32_t count;         ///< Character count
+  const uint8_t *bitmap;        ///< Characters bitmaps
+} const GLCD_FONT;
 
 //LCD参数
 extern _tftlcd_data tftlcd_data;	//管理LCD重要参数
@@ -64,10 +71,10 @@ extern u16  BACK_COLOR; //背景颜色.默认为白色
 //画笔颜色
 #define WHITE         	 0xFFFF
 #define BLACK         	 0x0000	  
-#define BLUE         	 0x001F
+#define BLUE         	   0x001F
 #define BRED             0XF81F
-#define GRED 			 0XFFE0
-#define GBLUE			 0X07FF
+#define GRED 			       0XFFE0
+#define GBLUE			       0X07FF
 #define RED           	 0xF800
 #define MAGENTA       	 0xF81F
 #define GREEN         	 0x07E0
@@ -99,7 +106,7 @@ void LCD_Draw_Circle(u16 x0,u16 y0,u8 r);
 void LCD_ShowChar(u16 x,u16 y,u8 num,u8 size,u8 mode);
 void LCD_ShowNum(u16 x,u16 y,u32 num,u8 len,u8 size);
 void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode);
-void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
+void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,const char *p);
 void LCD_ShowFontHZ(u16 x, u16 y, u8 *cn);					   						   																			
 void LCD_ShowPicture(u16 x, u16 y, u16 wide, u16 high,u8 *pic);
 
